@@ -148,6 +148,8 @@ Screen2ViewBase::Screen2ViewBase() :
     num00.setPosition(14, 84, 50, 50);
     num00.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num00.setLinespacing(0);
+    num00Buffer[0] = 0;
+    num00.setWildcard(num00Buffer);
     num00.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MXH7));
     add(num00);
 
@@ -214,6 +216,8 @@ Screen2ViewBase::Screen2ViewBase() :
     num23.setPosition(176, 192, 50, 50);
     num23.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num23.setLinespacing(0);
+    Unicode::snprintf(num23Buffer, NUM23_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_NAXM).getText());
+    num23.setWildcard(num23Buffer);
     num23.setTypedText(touchgfx::TypedText(T___SINGLEUSE_XI8B));
     add(num23);
 
@@ -273,4 +277,12 @@ void Screen2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonCo
         //Go to Screen1 with no screen transition
         application().gotoScreen1ScreenNoTransition();
     }
+}
+
+void Screen2ViewBase::handleTickEvent()
+{
+    //Interaction2
+    //When every N tick call virtual function
+    //Call tickEvent
+    tickEvent();
 }

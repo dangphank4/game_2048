@@ -489,7 +489,10 @@
             "Height": 50,
             "TextId": "__SingleUse_MXH7",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           },
           {
             "Type": "TextArea",
@@ -610,7 +613,11 @@
             "Height": 50,
             "TextId": "__SingleUse_XI8B",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_NAXM",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           },
           {
             "Type": "TextArea",
@@ -692,6 +699,17 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerOnEveryTick",
+              "TickCount": 1
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "tickEvent"
             }
           }
         ]

@@ -6,6 +6,9 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_NAXM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB"></Translation>
+      </Text>
       <Text Id="__SingleUse_01P9" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">High Score: &lt;value&gt;</Translation>
       </Text>
@@ -58,7 +61,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_MXH7" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="GB">T: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_NZLA" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">back</Translation>
@@ -69,7 +72,7 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>

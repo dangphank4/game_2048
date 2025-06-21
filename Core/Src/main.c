@@ -90,6 +90,11 @@ const osThreadAttr_t GUI_Task_attributes = {
 };
 /* USER CODE BEGIN PV */
 uint8_t isRevD = 0; /* Applicable only for STM32F429I DISCOVERY REVD and above */
+
+osMessageQueueId_t myQueue01Handle;
+const osMessageQueueAttr_t myQueue01_attributes = {
+		.name = ".myQueue01"
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -202,6 +207,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+  myQueue01Handle = osMessageQueueNew(16, sizeof(uint16_t), &myQueue01_attributes);
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -628,6 +634,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL; // thêm pull-up để tránh nhiễu
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
@@ -966,14 +976,24 @@ void LCD_Delay(uint32_t Delay)
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument)
 {
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
+  GPIO_PinState prevState = GPIO_PIN_RESET;
+
   for(;;)
   {
-    osDelay(100);
+    GPIO_PinState currState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+
+    if (currState == GPIO_PIN_SET && prevState == GPIO_PIN_RESET)
+    {
+        // Chỉ gửi khi phát hiện nhấn mới
+        uint8_t data = 'X';
+        osMessageQueuePut(myQueue01Handle, &data, 0, 0);
+    }
+
+    prevState = currState;  // Cập nhật trạng thái cũ
+    osDelay(20);            // Delay nhỏ cho chống rung và tiết kiệm CPU
   }
-  /* USER CODE END 5 */
 }
+
 
 /**
   * @brief  Period elapsed callback in non blocking mode

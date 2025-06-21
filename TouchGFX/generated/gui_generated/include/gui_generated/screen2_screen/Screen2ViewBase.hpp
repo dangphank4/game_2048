@@ -19,6 +19,15 @@ public:
     Screen2ViewBase();
     virtual ~Screen2ViewBase();
     virtual void setupScreen();
+    virtual void handleTickEvent();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void tickEvent()
+    {
+        // Override and implement this function in Screen2
+    }
 
 protected:
     FrontendApplication& application() {
@@ -83,6 +92,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard num33;
     touchgfx::TextAreaWithOneWildcard score;
     touchgfx::TextAreaWithOneWildcard highscore;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t NUM00_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar num00Buffer[NUM00_SIZE];
+    static const uint16_t NUM23_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar num23Buffer[NUM23_SIZE];
 
 private:
 
