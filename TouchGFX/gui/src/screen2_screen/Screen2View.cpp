@@ -8,13 +8,56 @@
 extern osMessageQueueId_t myQueue01Handle;
 extern int highScore;
 
+#define FLASH_SECTOR_SAVE      FLASH_SECTOR_6
+#define FLASH_SECTOR_ADDRESS   0x08040000  // Bắt đầu sector 6
+
+
 Screen2View::Screen2View()
 {
+}
+
+void Screen2View::saveHighScoreToFlash()
+{
+    HAL_FLASH_Unlock();
+
+    // Xóa sector trước khi ghi
+    FLASH_EraseInitTypeDef erase;
+    uint32_t sectorError;
+    erase.TypeErase    = FLASH_TYPEERASE_SECTORS;
+    erase.VoltageRange = FLASH_VOLTAGE_RANGE_3;  // 2.7V - 3.6V
+    erase.Sector       = FLASH_SECTOR_SAVE;
+    erase.NbSectors    = 1;
+
+    if (HAL_FLASHEx_Erase(&erase, &sectorError) != HAL_OK)
+    {
+        HAL_FLASH_Lock();
+        return;
+    }
+
+    HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, FLASH_SECTOR_ADDRESS, highScore);
+
+    HAL_FLASH_Lock();
+}
+
+void Screen2View::loadHighScoreFromFlash()
+{
+    uint32_t value = *(uint32_t*)FLASH_SECTOR_ADDRESS;
+
+    // Nếu dữ liệu hợp lệ (ví dụ không phải 0xFFFFFFFF)
+    if (value != 0xFFFFFFFF)
+    {
+        highScore = value;
+    }
+    else
+    {
+        highScore = 0;
+    }
 }
 
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
+    loadHighScoreFromFlash();
     initGame();
 }
 
@@ -32,6 +75,7 @@ void Screen2View::initGame()
     gameOverText.invalidate();
 
     spawnTile();
+    HAL_Delay(8);
     spawnTile();
     updateUI();
 }
@@ -42,18 +86,35 @@ void Screen2View::spawnTile()
     int emptyPos[16][2];
 
     for (int i = 0; i < 4; i++)
+    {
         for (int j = 0; j < 4; j++)
+        {
             if (tickCount[i][j] == 0)
-                emptyPos[emptyCount][0] = i, emptyPos[emptyCount++][1] = j;
+            {
+                emptyPos[emptyCount][0] = i;
+                emptyPos[emptyCount][1] = j;
+                emptyCount++;
+            }
+        }
+    }
 
     if (emptyCount > 0)
     {
-        int idx = HAL_GetTick() % emptyCount;
+        // Gọi HAL_GetTick() một lần duy nhất
+        uint32_t tick = HAL_GetTick() ;
+
+        // Sử dụng tick để sinh số "ngẫu nhiên"
+        int idx = tick % emptyCount;
         int i = emptyPos[idx][0];
         int j = emptyPos[idx][1];
-        tickCount[i][j] = (HAL_GetTick() % 10 == 0) ? 4 : 2;
+
+        tick = tick ^ (i * 31 + j * 17);
+
+        // Dùng tick tiếp tục để quyết định giá trị 2 hoặc 4
+        tickCount[i][j] = ((tick / 10) % 10 == 0) ? 4 : 2;
     }
 }
+
 
 void Screen2View::updateUI()
 {
@@ -194,6 +255,8 @@ void Screen2View::restart()
     if (score > highScore)
         highScore = score;
 
+    saveHighScoreToFlash();
+
     initGame();
 }
 
@@ -236,6 +299,6 @@ bool Screen2View::isGameOver()
             if (i < 3 && tickCount[i][j] == tickCount[i + 1][j]) return false;
             if (j < 3 && tickCount[i][j] == tickCount[i][j + 1]) return false;
         }
-
+    saveHighScoreToFlash();
     return true;
 }

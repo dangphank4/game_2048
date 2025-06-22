@@ -31,6 +31,8 @@ protected:
     void moveLeft();
     void moveRight();
     bool isGameOver();
+    void saveHighScoreToFlash();
+    void loadHighScoreFromFlash();
 };
 
 #endif // SCREEN2VIEW_HPP
