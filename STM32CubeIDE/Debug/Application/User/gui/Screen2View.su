@@ -1,9 +1,11 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
-D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:17:6:virtual void Screen2View::tearDownScreen()	0	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:20:6:virtual void Screen2View::tearDownScreen()	0	static
 ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:11:13:Screen2View::~Screen2View()	8	static
 ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:11:13:virtual Screen2View::~Screen2View()	8	static
-D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:6:1:Screen2View::Screen2View()	8	static
-D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:23:6:void Screen2View::setText()	16	static
-D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:11:6:virtual void Screen2View::setupScreen()	8	static
-D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:30:6:virtual void Screen2View::tickEvent()	24	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:8:1:Screen2View::Screen2View()	8	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:35:6:void Screen2View::spawnTile()	144	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:54:6:void Screen2View::updateUI()	24	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:26:6:void Screen2View::initGame()	8	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:13:6:virtual void Screen2View::setupScreen()	8	static
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:91:6:virtual void Screen2View::tickEvent()	24	static

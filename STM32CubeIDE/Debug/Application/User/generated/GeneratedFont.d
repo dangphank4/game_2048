@@ -1,5 +1,5 @@
 Application/User/generated/GeneratedFont.o: \
- D:/2048_newgame/TouchGFX/generated/fonts/src/GeneratedFont.cpp \
+ D:/game_2048/TouchGFX/generated/fonts/src/GeneratedFont.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/GeneratedFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/ConstFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \

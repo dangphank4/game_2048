@@ -1,5 +1,5 @@
 Application/User/generated/Texts.o: \
- D:/2048_newgame/TouchGFX/generated/texts/src/Texts.cpp \
+ D:/game_2048/TouchGFX/generated/texts/src/Texts.cpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/TextProvider.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp \

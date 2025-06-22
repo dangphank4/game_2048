@@ -1,5 +1,5 @@
 Middlewares/FreeRTOS/queue.o: \
- D:/2048_newgame/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
+ D:/game_2048/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

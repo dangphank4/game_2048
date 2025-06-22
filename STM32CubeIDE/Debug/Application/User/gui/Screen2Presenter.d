@@ -1,5 +1,5 @@
 Application/User/gui/Screen2Presenter.o: \
- D:/2048_newgame/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp \
+ D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp \
  ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
  ../../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \

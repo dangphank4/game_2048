@@ -1,5 +1,5 @@
 Application/User/generated/SVGDatabase.o: \
- D:/2048_newgame/TouchGFX/generated/images/src/SVGDatabase.cpp \
+ D:/game_2048/TouchGFX/generated/images/src/SVGDatabase.cpp \
  ../../TouchGFX/generated/images/include/images/SVGDatabase.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp \

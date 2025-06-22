@@ -1,1 +1,1 @@
-D:/2048_newgame/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp:5:6:static void touchgfx::VectorFontRendererImpl::getVectorFontBuffers(float*&, int&, uint8_t*&, int&)	1
+D:/game_2048/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp:5:6:static void touchgfx::VectorFontRendererImpl::getVectorFontBuffers(float*&, int&, uint8_t*&, int&)	1

@@ -1,5 +1,5 @@
 Application/User/generated/CompressedFontCache.o: \
- D:/2048_newgame/TouchGFX/generated/fonts/src/CompressedFontCache.cpp \
+ D:/game_2048/TouchGFX/generated/fonts/src/CompressedFontCache.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/CompressedFontCache.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp \

@@ -1,5 +1,5 @@
 Application/User/generated/CompressedUnmappedFontCache.o: \
- D:/2048_newgame/TouchGFX/generated/fonts/src/CompressedUnmappedFontCache.cpp \
+ D:/game_2048/TouchGFX/generated/fonts/src/CompressedUnmappedFontCache.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/CompressedUnmappedFontCache.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/FlashDataReader.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \

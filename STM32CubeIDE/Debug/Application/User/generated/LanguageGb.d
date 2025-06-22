@@ -1,5 +1,5 @@
 Application/User/generated/LanguageGb.o: \
- D:/2048_newgame/TouchGFX/generated/texts/src/LanguageGb.cpp \
+ D:/game_2048/TouchGFX/generated/texts/src/LanguageGb.cpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp
