@@ -12,14 +12,24 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     virtual void tickEvent();
+    virtual void restart();
 
 protected:
-    Unicode::UnicodeChar numBuffer[4][4][10];
     uint32_t tickCount[4][4] = {{0}};
+    int score = 0;
+
+    Unicode::UnicodeChar numBuffer[4][4][10];
+    Unicode::UnicodeChar scoreBuffer[10];
+    Unicode::UnicodeChar highScoreBuffer[10];
 
     void initGame();
     void spawnTile();
     void updateUI();
+
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
 };
 
 #endif // SCREEN2VIEW_HPP

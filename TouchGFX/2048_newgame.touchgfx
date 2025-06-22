@@ -82,10 +82,10 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "flexButton1",
+            "Name": "back_bt",
             "X": 12,
             "Y": 8,
-            "Width": 84,
+            "Width": 56,
             "Height": 33,
             "ButtonTrigger": {
               "Type": "ClickButtonTrigger"
@@ -93,7 +93,7 @@
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 84,
+                "Width": 56,
                 "Height": 33,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
@@ -119,8 +119,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "back",
-            "X": 31,
+            "Name": "back_tx",
+            "X": 18,
             "Y": 14,
             "Width": 46,
             "Height": 20,
@@ -483,16 +483,13 @@
           {
             "Type": "TextArea",
             "Name": "num00",
-            "X": 14,
+            "X": 12,
             "Y": 84,
             "Width": 50,
             "Height": 50,
             "TextId": "__SingleUse_MXH7",
             "TextRotation": "0",
-            "Wildcard1": {
-              "UseBuffer": true,
-              "BufferSize": 10
-            }
+            "Wildcard1": {}
           },
           {
             "Type": "TextArea",
@@ -665,27 +662,78 @@
           },
           {
             "Type": "TextArea",
-            "Name": "score",
-            "X": 139,
-            "Y": 41,
-            "Width": 37,
+            "Name": "scoreText",
+            "X": 120,
+            "Y": 50,
+            "Width": 116,
             "Height": 12,
             "TextId": "__SingleUse_CE6J",
             "TextRotation": "0",
-            "AutoSize": true,
             "Wildcard1": {}
           },
           {
             "Type": "TextArea",
-            "Name": "highscore",
-            "X": 139,
+            "Name": "highscoreText",
+            "X": 120,
             "Y": 62,
-            "Width": 64,
+            "Width": 116,
             "Height": 12,
             "TextId": "__SingleUse_01P9",
             "TextRotation": "0",
-            "AutoSize": true,
             "Wildcard1": {}
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "restart_bt",
+            "X": 138,
+            "Y": 8,
+            "Width": 88,
+            "Height": 33,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 88,
+                "Height": 33,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "restart_tx",
+            "X": 143,
+            "Y": 14,
+            "Width": 73,
+            "Height": 20,
+            "TextId": "__SingleUse_BS6H",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
           }
         ],
         "Interactions": [
@@ -693,7 +741,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
+              "TriggerComponent": "back_bt"
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -710,6 +758,17 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "tickEvent"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "restart_bt"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "restart"
             }
           }
         ]

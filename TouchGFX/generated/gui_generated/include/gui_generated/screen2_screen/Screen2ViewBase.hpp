@@ -28,6 +28,10 @@ public:
     {
         // Override and implement this function in Screen2
     }
+    virtual void restart()
+    {
+        // Override and implement this function in Screen2
+    }
 
 protected:
     FrontendApplication& application() {
@@ -40,8 +44,8 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box box34;
     touchgfx::Box box1;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  flexButton1;
-    touchgfx::TextArea back;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  back_bt;
+    touchgfx::TextArea back_tx;
     touchgfx::Container container00;
     touchgfx::Container container10;
     touchgfx::Container container11;
@@ -90,14 +94,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard num31;
     touchgfx::TextAreaWithOneWildcard num32;
     touchgfx::TextAreaWithOneWildcard num33;
-    touchgfx::TextAreaWithOneWildcard score;
-    touchgfx::TextAreaWithOneWildcard highscore;
+    touchgfx::TextAreaWithOneWildcard scoreText;
+    touchgfx::TextAreaWithOneWildcard highscoreText;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  restart_bt;
+    touchgfx::TextArea restart_tx;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t NUM00_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar num00Buffer[NUM00_SIZE];
     static const uint16_t NUM23_SIZE = 10;
     touchgfx::Unicode::UnicodeChar num23Buffer[NUM23_SIZE];
 

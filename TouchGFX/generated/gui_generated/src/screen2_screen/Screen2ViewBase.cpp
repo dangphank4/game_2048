@@ -20,18 +20,18 @@ Screen2ViewBase::Screen2ViewBase() :
     box1.setColor(touchgfx::Color::getColorFromRGB(238, 238, 238));
     add(box1);
 
-    flexButton1.setBoxWithBorderPosition(0, 0, 84, 33);
-    flexButton1.setBorderSize(5);
-    flexButton1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1.setAction(flexButtonCallback);
-    flexButton1.setPosition(12, 8, 84, 33);
-    add(flexButton1);
+    back_bt.setBoxWithBorderPosition(0, 0, 56, 33);
+    back_bt.setBorderSize(5);
+    back_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    back_bt.setAction(flexButtonCallback);
+    back_bt.setPosition(12, 8, 56, 33);
+    add(back_bt);
 
-    back.setXY(31, 14);
-    back.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    back.setLinespacing(0);
-    back.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NZLA));
-    add(back);
+    back_tx.setXY(18, 14);
+    back_tx.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    back_tx.setLinespacing(0);
+    back_tx.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NZLA));
+    add(back_tx);
 
     container00.setPosition(14, 84, 50, 50);
     add(container00);
@@ -145,11 +145,9 @@ Screen2ViewBase::Screen2ViewBase() :
     box21.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box21);
 
-    num00.setPosition(14, 84, 50, 50);
+    num00.setPosition(12, 84, 50, 50);
     num00.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num00.setLinespacing(0);
-    num00Buffer[0] = 0;
-    num00.setWildcard(num00Buffer);
     num00.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MXH7));
     add(num00);
 
@@ -245,17 +243,30 @@ Screen2ViewBase::Screen2ViewBase() :
     num33.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L29N));
     add(num33);
 
-    score.setXY(139, 41);
-    score.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    score.setLinespacing(0);
-    score.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CE6J));
-    add(score);
+    scoreText.setPosition(120, 50, 116, 12);
+    scoreText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    scoreText.setLinespacing(0);
+    scoreText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CE6J));
+    add(scoreText);
 
-    highscore.setXY(139, 62);
-    highscore.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    highscore.setLinespacing(0);
-    highscore.setTypedText(touchgfx::TypedText(T___SINGLEUSE_01P9));
-    add(highscore);
+    highscoreText.setPosition(120, 62, 116, 12);
+    highscoreText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    highscoreText.setLinespacing(0);
+    highscoreText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_01P9));
+    add(highscoreText);
+
+    restart_bt.setBoxWithBorderPosition(0, 0, 88, 33);
+    restart_bt.setBorderSize(5);
+    restart_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    restart_bt.setAction(flexButtonCallback);
+    restart_bt.setPosition(138, 8, 88, 33);
+    add(restart_bt);
+
+    restart_tx.setXY(143, 14);
+    restart_tx.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    restart_tx.setLinespacing(0);
+    restart_tx.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BS6H));
+    add(restart_tx);
 }
 
 Screen2ViewBase::~Screen2ViewBase()
@@ -270,12 +281,19 @@ void Screen2ViewBase::setupScreen()
 
 void Screen2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-    if (&src == &flexButton1)
+    if (&src == &back_bt)
     {
         //Interaction1
-        //When flexButton1 clicked change screen to Screen1
+        //When back_bt clicked change screen to Screen1
         //Go to Screen1 with no screen transition
         application().gotoScreen1ScreenNoTransition();
+    }
+    if (&src == &restart_bt)
+    {
+        //Interaction3
+        //When restart_bt clicked call virtual function
+        //Call restart
+        restart();
     }
 }
 
