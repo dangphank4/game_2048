@@ -145,73 +145,73 @@ Screen2ViewBase::Screen2ViewBase() :
     box21.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box21);
 
-    num00.setPosition(12, 84, 50, 50);
+    num00.setPosition(12, 96, 50, 25);
     num00.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num00.setLinespacing(0);
     num00.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MXH7));
     add(num00);
 
-    num01.setPosition(68, 84, 50, 50);
+    num01.setPosition(68, 96, 50, 25);
     num01.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num01.setLinespacing(0);
     num01.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ILOP));
     add(num01);
 
-    num02.setPosition(122, 84, 50, 50);
+    num02.setPosition(122, 96, 50, 25);
     num02.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num02.setLinespacing(0);
     num02.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DVXY));
     add(num02);
 
-    num03.setPosition(176, 84, 50, 50);
+    num03.setPosition(176, 96, 50, 25);
     num03.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num03.setLinespacing(0);
     num03.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EP5N));
     add(num03);
 
-    num10.setPosition(14, 138, 50, 50);
+    num10.setPosition(14, 150, 50, 25);
     num10.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num10.setLinespacing(0);
     num10.setTypedText(touchgfx::TypedText(T___SINGLEUSE_N35D));
     add(num10);
 
-    num11.setPosition(68, 138, 50, 50);
+    num11.setPosition(68, 150, 50, 25);
     num11.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num11.setLinespacing(0);
     num11.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DEW0));
     add(num11);
 
-    num12.setPosition(122, 138, 50, 50);
+    num12.setPosition(122, 150, 50, 25);
     num12.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num12.setLinespacing(0);
     num12.setTypedText(touchgfx::TypedText(T___SINGLEUSE_V85F));
     add(num12);
 
-    num13.setPosition(176, 138, 50, 50);
+    num13.setPosition(176, 150, 50, 25);
     num13.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num13.setLinespacing(0);
     num13.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0DQ5));
     add(num13);
 
-    num20.setPosition(14, 192, 50, 50);
+    num20.setPosition(14, 204, 50, 25);
     num20.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num20.setLinespacing(0);
     num20.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OFR6));
     add(num20);
 
-    num21.setPosition(68, 192, 50, 50);
+    num21.setPosition(68, 204, 50, 25);
     num21.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num21.setLinespacing(0);
     num21.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5AFB));
     add(num21);
 
-    num22.setPosition(122, 192, 50, 50);
+    num22.setPosition(122, 204, 50, 25);
     num22.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num22.setLinespacing(0);
     num22.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PHJQ));
     add(num22);
 
-    num23.setPosition(176, 192, 50, 50);
+    num23.setPosition(176, 204, 50, 25);
     num23.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num23.setLinespacing(0);
     Unicode::snprintf(num23Buffer, NUM23_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_NAXM).getText());
@@ -219,25 +219,25 @@ Screen2ViewBase::Screen2ViewBase() :
     num23.setTypedText(touchgfx::TypedText(T___SINGLEUSE_XI8B));
     add(num23);
 
-    num30.setPosition(14, 246, 50, 50);
+    num30.setPosition(14, 258, 50, 25);
     num30.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num30.setLinespacing(0);
     num30.setTypedText(touchgfx::TypedText(T___SINGLEUSE_J78X));
     add(num30);
 
-    num31.setPosition(68, 246, 50, 50);
+    num31.setPosition(68, 258, 50, 25);
     num31.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num31.setLinespacing(0);
     num31.setTypedText(touchgfx::TypedText(T___SINGLEUSE_X149));
     add(num31);
 
-    num32.setPosition(122, 246, 50, 50);
+    num32.setPosition(122, 258, 50, 25);
     num32.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num32.setLinespacing(0);
     num32.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CPFM));
     add(num32);
 
-    num33.setPosition(176, 246, 50, 50);
+    num33.setPosition(176, 258, 50, 25);
     num33.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     num33.setLinespacing(0);
     num33.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L29N));
@@ -267,6 +267,13 @@ Screen2ViewBase::Screen2ViewBase() :
     restart_tx.setLinespacing(0);
     restart_tx.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BS6H));
     add(restart_tx);
+
+    gameOverText.setXY(25, 160);
+    gameOverText.setColor(touchgfx::Color::getColorFromRGB(237, 0, 0));
+    gameOverText.setLinespacing(0);
+    gameOverText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_85HI));
+    gameOverText.setVisible(false);
+    add(gameOverText);
 }
 
 Screen2ViewBase::~Screen2ViewBase()

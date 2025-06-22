@@ -30,6 +30,7 @@ protected:
     void moveDown();
     void moveLeft();
     void moveRight();
+    bool isGameOver();
 };
 
 #endif // SCREEN2VIEW_HPP

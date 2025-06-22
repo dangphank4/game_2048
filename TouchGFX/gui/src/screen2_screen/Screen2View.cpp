@@ -1,22 +1,21 @@
-#include <gui/screen2_screen/Screen2View.hpp>     // View class
-#include <touchgfx/Unicode.hpp>                   // Unicode::snprintf
-#include <cmsis_os.h>                             // osMessageQueue APIs
+#include <gui/screen2_screen/Screen2View.hpp>
+#include <touchgfx/Unicode.hpp>
+#include <cmsis_os.h>
 #include "main.h"
 #include <math.h>
 #include <string.h>
 
 extern osMessageQueueId_t myQueue01Handle;
 extern int highScore;
+
 Screen2View::Screen2View()
 {
-
 }
 
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
     initGame();
-
 }
 
 void Screen2View::tearDownScreen()
@@ -24,17 +23,18 @@ void Screen2View::tearDownScreen()
     Screen2ViewBase::tearDownScreen();
 }
 
-
 void Screen2View::initGame()
 {
     memset(tickCount, 0, sizeof(tickCount));
     score = 0;
 
+    gameOverText.setVisible(false); // Ẩn thông báo thua khi bắt đầu
+    gameOverText.invalidate();
+
     spawnTile();
     spawnTile();
     updateUI();
 }
-//
 
 void Screen2View::spawnTile()
 {
@@ -64,6 +64,7 @@ void Screen2View::updateUI()
     Unicode::snprintf(highScoreBuffer, 10, "%d", highScore);
     highscoreText.setWildcard(highScoreBuffer);
     highscoreText.invalidate();
+
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -73,7 +74,6 @@ void Screen2View::updateUI()
             else
                 Unicode::snprintf(numBuffer[i][j], 10, "%d", tickCount[i][j]);
 
-            // map 4x4 tile: tile00, tile01, ..., tile33
             switch (i * 4 + j)
             {
             case 0: num00.setWildcard(numBuffer[i][j]); num00.invalidate(); break;
@@ -95,12 +95,10 @@ void Screen2View::updateUI()
             }
         }
     }
-
 }
 
-
-
-void Screen2View::moveUp() {
+void Screen2View::moveUp()
+{
     for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 3; x++) {
             for (int k = x + 1; k < 4; k++) {
@@ -108,13 +106,12 @@ void Screen2View::moveUp() {
                     if (tickCount[x][y] == 0) {
                         tickCount[x][y] = tickCount[k][y];
                         tickCount[k][y] = 0;
-                        x--; // kiểm lại ô hiện tại
+                        x--;
                     } else if (tickCount[x][y] == tickCount[k][y]) {
                         tickCount[x][y] *= 2;
                         tickCount[k][y] = 0;
                         score += tickCount[x][y];
-                        if (score > highScore)
-                        	        highScore = score;
+                        if (score > highScore) highScore = score;
                     }
                     break;
                 }
@@ -123,7 +120,8 @@ void Screen2View::moveUp() {
     }
 }
 
-void Screen2View::moveDown() {
+void Screen2View::moveDown()
+{
     for (int y = 0; y < 4; y++) {
         for (int x = 3; x > 0; x--) {
             for (int k = x - 1; k >= 0; k--) {
@@ -136,8 +134,7 @@ void Screen2View::moveDown() {
                         tickCount[x][y] *= 2;
                         tickCount[k][y] = 0;
                         score += tickCount[x][y];
-                        if (score > highScore)
-                        	        highScore = score;
+                        if (score > highScore) highScore = score;
                     }
                     break;
                 }
@@ -146,29 +143,31 @@ void Screen2View::moveDown() {
     }
 }
 
-void Screen2View:: moveLeft(){
-	for(int x = 0; x < 4; x++){
-		for(int y = 0; y < 3; y++){
-			for(int k = y + 1; k < 4; k++){
-				if(tickCount[x][k] > 0){
-					if(tickCount[x][y] == 0){
-						tickCount[x][y] = tickCount[x][k];
-						tickCount[x][k] = 0;
-						y--;
-					}else if(tickCount[x][y] == tickCount[x][k]){
-						tickCount[x][y] *= 2;
-						tickCount[x][k] = 0;
-						score += tickCount[x][y];
-						if (score > highScore)
-							        highScore = score;
-					}
-					break;
-				}
-			}
-		}
-	}
+void Screen2View::moveLeft()
+{
+    for (int x = 0; x < 4; x++) {
+        for (int y = 0; y < 3; y++) {
+            for (int k = y + 1; k < 4; k++) {
+                if (tickCount[x][k] > 0) {
+                    if (tickCount[x][y] == 0) {
+                        tickCount[x][y] = tickCount[x][k];
+                        tickCount[x][k] = 0;
+                        y--;
+                    } else if (tickCount[x][y] == tickCount[x][k]) {
+                        tickCount[x][y] *= 2;
+                        tickCount[x][k] = 0;
+                        score += tickCount[x][y];
+                        if (score > highScore) highScore = score;
+                    }
+                    break;
+                }
+            }
+        }
+    }
 }
-void Screen2View::moveRight() {
+
+void Screen2View::moveRight()
+{
     for (int x = 0; x < 4; x++) {
         for (int y = 3; y > 0; y--) {
             for (int k = y - 1; k >= 0; k--) {
@@ -176,13 +175,12 @@ void Screen2View::moveRight() {
                     if (tickCount[x][y] == 0) {
                         tickCount[x][y] = tickCount[x][k];
                         tickCount[x][k] = 0;
-                        y++; // kiểm lại ô hiện tại sau khi đẩy
+                        y++;
                     } else if (tickCount[x][y] == tickCount[x][k]) {
                         tickCount[x][y] *= 2;
                         tickCount[x][k] = 0;
                         score += tickCount[x][y];
-                        if (score > highScore)
-                        	        highScore = score;
+                        if (score > highScore) highScore = score;
                     }
                     break;
                 }
@@ -191,12 +189,12 @@ void Screen2View::moveRight() {
     }
 }
 
+void Screen2View::restart()
+{
+    if (score > highScore)
+        highScore = score;
 
-void Screen2View::restart(){
-	 if (score > highScore)
-	        highScore = score;
-
-	 initGame();
+    initGame();
 }
 
 void Screen2View::tickEvent()
@@ -208,26 +206,36 @@ void Screen2View::tickEvent()
 
         switch (res)
         {
-        case 'U':
-            moveUp();
-            spawnTile();
-            updateUI();
-            break;
-        case 'D':
-            moveDown();
-            spawnTile();
-            updateUI();
-            break;
-        case 'L':
-            moveLeft();
-            spawnTile();
-            updateUI();
-            break;
-        case 'R':
-            moveRight();
-            spawnTile();
-            updateUI();
-            break;
+        case 'U': moveUp(); break;
+        case 'D': moveDown(); break;
+        case 'L': moveLeft(); break;
+        case 'R': moveRight(); break;
+        }
+
+        spawnTile();
+        updateUI();
+
+        // Kiểm tra thua
+        if (isGameOver()) {
+            gameOverText.setVisible(true);
+            gameOverText.invalidate();
         }
     }
+}
+
+bool Screen2View::isGameOver()
+{
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            if (tickCount[i][j] == 0)
+                return false;
+
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+        {
+            if (i < 3 && tickCount[i][j] == tickCount[i + 1][j]) return false;
+            if (j < 3 && tickCount[i][j] == tickCount[i][j + 1]) return false;
+        }
+
+    return true;
 }

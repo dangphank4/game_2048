@@ -98,6 +98,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard highscoreText;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  restart_bt;
     touchgfx::TextArea restart_tx;
+    touchgfx::TextArea gameOverText;
 
     /*
      * Wildcard Buffers
