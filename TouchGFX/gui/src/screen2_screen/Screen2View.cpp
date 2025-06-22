@@ -4,18 +4,36 @@
 #include "main.h"
 #include <math.h>
 #include <string.h>
+#include <touchgfx/Color.hpp>
 
 extern osMessageQueueId_t myQueue01Handle;
 extern int highScore;
 
-#define FLASH_SECTOR_SAVE      FLASH_SECTOR_6
-#define FLASH_SECTOR_ADDRESS   0x08040000  // Bắt đầu sector 6
+#define FLASH_SECTOR_SAVE      FLASH_SECTOR_11
+#define FLASH_SECTOR_ADDRESS   0x080F0000
 
 
 Screen2View::Screen2View()
 {
 }
-
+colortype getColorForValue(int value)
+{
+    switch (value)
+    {
+    case 2:    return Color::getColorFromRGB(238, 228, 218);
+    case 4:    return Color::getColorFromRGB(237, 224, 200);
+    case 8:    return Color::getColorFromRGB(242, 177, 121);
+    case 16:   return Color::getColorFromRGB(245, 149, 99);
+    case 32:   return Color::getColorFromRGB(246, 124, 95);
+    case 64:   return Color::getColorFromRGB(246, 94, 59);
+    case 128:  return Color::getColorFromRGB(237, 207, 114);
+    case 256:  return Color::getColorFromRGB(237, 204, 97);
+    case 512:  return Color::getColorFromRGB(237, 200, 80);
+    case 1024: return Color::getColorFromRGB(237, 197, 63);
+    case 2048: return Color::getColorFromRGB(237, 194, 46);
+    default:   return Color::getColorFromRGB(205, 193, 180);
+    }
+}
 void Screen2View::saveHighScoreToFlash()
 {
     HAL_FLASH_Unlock();
@@ -115,7 +133,6 @@ void Screen2View::spawnTile()
     }
 }
 
-
 void Screen2View::updateUI()
 {
     Unicode::snprintf(scoreBuffer, 10, "%d", score);
@@ -131,32 +148,51 @@ void Screen2View::updateUI()
         for (int j = 0; j < 4; j++)
         {
             if (tickCount[i][j] == 0)
-                Unicode::snprintf(numBuffer[i][j], 10, "");
+                Unicode::snprintf(numBuffer[i][j], 6, "");
             else
-                Unicode::snprintf(numBuffer[i][j], 10, "%d", tickCount[i][j]);
+                Unicode::snprintf(numBuffer[i][j], 6, "%d", tickCount[i][j]);
+
+            colortype color = getColorForValue(tickCount[i][j]);
 
             switch (i * 4 + j)
             {
-            case 0: num00.setWildcard(numBuffer[i][j]); num00.invalidate(); break;
-            case 1: num01.setWildcard(numBuffer[i][j]); num01.invalidate(); break;
-            case 2: num02.setWildcard(numBuffer[i][j]); num02.invalidate(); break;
-            case 3: num03.setWildcard(numBuffer[i][j]); num03.invalidate(); break;
-            case 4: num10.setWildcard(numBuffer[i][j]); num10.invalidate(); break;
-            case 5: num11.setWildcard(numBuffer[i][j]); num11.invalidate(); break;
-            case 6: num12.setWildcard(numBuffer[i][j]); num12.invalidate(); break;
-            case 7: num13.setWildcard(numBuffer[i][j]); num13.invalidate(); break;
-            case 8: num20.setWildcard(numBuffer[i][j]); num20.invalidate(); break;
-            case 9: num21.setWildcard(numBuffer[i][j]); num21.invalidate(); break;
-            case 10: num22.setWildcard(numBuffer[i][j]); num22.invalidate(); break;
-            case 11: num23.setWildcard(numBuffer[i][j]); num23.invalidate(); break;
-            case 12: num30.setWildcard(numBuffer[i][j]); num30.invalidate(); break;
-            case 13: num31.setWildcard(numBuffer[i][j]); num31.invalidate(); break;
-            case 14: num32.setWildcard(numBuffer[i][j]); num32.invalidate(); break;
-            case 15: num33.setWildcard(numBuffer[i][j]); num33.invalidate(); break;
+            case 0:  num00.setWildcard(numBuffer[i][j]); num00.invalidate();
+                     box00.setColor(color); box00.invalidate(); break;
+            case 1:  num01.setWildcard(numBuffer[i][j]); num01.invalidate();
+                     box01.setColor(color); box01.invalidate(); break;
+            case 2:  num02.setWildcard(numBuffer[i][j]); num02.invalidate();
+                     box02.setColor(color); box02.invalidate(); break;
+            case 3:  num03.setWildcard(numBuffer[i][j]); num03.invalidate();
+                     box03.setColor(color); box03.invalidate(); break;
+            case 4:  num10.setWildcard(numBuffer[i][j]); num10.invalidate();
+                     box10.setColor(color); box10.invalidate(); break;
+            case 5:  num11.setWildcard(numBuffer[i][j]); num11.invalidate();
+                     box11.setColor(color); box11.invalidate(); break;
+            case 6:  num12.setWildcard(numBuffer[i][j]); num12.invalidate();
+                     box12.setColor(color); box12.invalidate(); break;
+            case 7:  num13.setWildcard(numBuffer[i][j]); num13.invalidate();
+                     box13.setColor(color); box13.invalidate(); break;
+            case 8:  num20.setWildcard(numBuffer[i][j]); num20.invalidate();
+                     box20.setColor(color); box20.invalidate(); break;
+            case 9:  num21.setWildcard(numBuffer[i][j]); num21.invalidate();
+                     box21.setColor(color); box21.invalidate(); break;
+            case 10: num22.setWildcard(numBuffer[i][j]); num22.invalidate();
+                     box22.setColor(color); box22.invalidate(); break;
+            case 11: num23.setWildcard(numBuffer[i][j]); num23.invalidate();
+                     box23.setColor(color); box23.invalidate(); break;
+            case 12: num30.setWildcard(numBuffer[i][j]); num30.invalidate();
+                     box30.setColor(color); box30.invalidate(); break;
+            case 13: num31.setWildcard(numBuffer[i][j]); num31.invalidate();
+                     box31.setColor(color); box31.invalidate(); break;
+            case 14: num32.setWildcard(numBuffer[i][j]); num32.invalidate();
+                     box32.setColor(color); box32.invalidate(); break;
+            case 15: num33.setWildcard(numBuffer[i][j]); num33.invalidate();
+                     box33.setColor(color); box33.invalidate(); break;
             }
         }
     }
 }
+
 
 void Screen2View::moveUp()
 {
@@ -256,7 +292,6 @@ void Screen2View::restart()
         highScore = score;
 
     saveHighScoreToFlash();
-
     initGame();
 }
 
