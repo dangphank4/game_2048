@@ -11,12 +11,15 @@ public:
     virtual ~Screen2View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-
-    void setText();
     virtual void tickEvent();
+
 protected:
-    Unicode::UnicodeChar numBuffer[10];
-    uint32_t tickCount = 0;
+    Unicode::UnicodeChar numBuffer[4][4][10];
+    uint32_t tickCount[4][4] = {{0}};
+
+    void initGame();
+    void spawnTile();
+    void updateUI();
 };
 
 #endif // SCREEN2VIEW_HPP

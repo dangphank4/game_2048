@@ -61,7 +61,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_MXH7" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">T: &lt;value&gt;</Translation>
+        <Translation Language="GB"> &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_NZLA" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">back</Translation>

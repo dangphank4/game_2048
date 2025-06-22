@@ -28,7 +28,7 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     12, // T___SINGLEUSE_EP5N: "<>"
     12, // T___SINGLEUSE_DVXY: "<>"
     12, // T___SINGLEUSE_ILOP: "<>"
-    14, // T___SINGLEUSE_MXH7: "T: <>"
-    25, // T___SINGLEUSE_NZLA: "back"
-    19  // T___SINGLEUSE_215A: "Start"
+    11, // T___SINGLEUSE_MXH7: " <>"
+    20, // T___SINGLEUSE_NZLA: "back"
+    14  // T___SINGLEUSE_215A: "Start"
 };
