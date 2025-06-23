@@ -10,19 +10,20 @@
             "Width": 240,
             "Height": 320,
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 238,
+              "Green": 228,
+              "Blue": 219
             }
           },
           {
             "Type": "ButtonWithLabel",
             "Name": "start",
+            "X": 32,
             "Y": 210,
-            "Width": 240,
+            "Width": 175,
             "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_small_round_normal.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_small_round_action.png",
             "TextId": "__SingleUse_215A",
             "ReleasedColor": {
               "Red": 255,
@@ -34,8 +35,23 @@
               "Green": 255,
               "Blue": 255
             },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 75,
+            "Y": 41,
+            "Width": 88,
+            "Height": 40,
+            "TextId": "__SingleUse_2CLZ",
             "TextRotation": "0",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+            "Color": {
+              "Red": 143,
+              "Green": 122,
+              "Blue": 102
+            },
+            "AutoSize": true
           }
         ],
         "Interactions": [
@@ -62,9 +78,9 @@
             "Width": 240,
             "Height": 320,
             "Color": {
-              "Red": 100,
-              "Green": 237,
-              "Blue": 223
+              "Red": 238,
+              "Green": 228,
+              "Blue": 219
             }
           },
           {
@@ -96,14 +112,14 @@
                 "Width": 56,
                 "Height": 33,
                 "LockToFlexButtonSize": true,
-                "BorderSize": 5,
                 "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
+                  "Red": 255,
+                  "Green": 153
                 },
                 "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
+                  "Red": 227,
+                  "Green": 203,
+                  "Blue": 18
                 },
                 "ColorBorderReleased": {
                   "Green": 51,
@@ -122,10 +138,15 @@
             "Name": "back_tx",
             "X": 18,
             "Y": 14,
-            "Width": 46,
+            "Width": 48,
             "Height": 20,
             "TextId": "__SingleUse_NZLA",
             "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
             "AutoSize": true
           },
           {
@@ -698,14 +719,15 @@
                 "Width": 88,
                 "Height": 33,
                 "LockToFlexButtonSize": true,
-                "BorderSize": 5,
                 "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
+                  "Red": 12,
+                  "Green": 120,
+                  "Blue": 173
                 },
                 "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
+                  "Red": 57,
+                  "Green": 100,
+                  "Blue": 115
                 },
                 "ColorBorderReleased": {
                   "Green": 51,

@@ -14,16 +14,22 @@ Screen1ViewBase::Screen1ViewBase() :
     add(__background);
 
     box1.setPosition(0, 0, 240, 320);
-    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box1.setColor(touchgfx::Color::getColorFromRGB(238, 228, 219));
     add(box1);
 
-    start.setXY(0, 210);
-    start.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID));
+    start.setXY(32, 210);
+    start.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_SMALL_ROUND_ACTION_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_SMALL_ROUND_NORMAL_ID));
     start.setLabelText(touchgfx::TypedText(T___SINGLEUSE_215A));
     start.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     start.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     start.setAction(buttonCallback);
     add(start);
+
+    textArea1.setXY(75, 41);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(143, 122, 102));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2CLZ));
+    add(textArea1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

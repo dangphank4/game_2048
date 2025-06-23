@@ -13,7 +13,7 @@ Screen2ViewBase::Screen2ViewBase() :
     add(__background);
 
     box34.setPosition(0, 0, 240, 320);
-    box34.setColor(touchgfx::Color::getColorFromRGB(100, 237, 223));
+    box34.setColor(touchgfx::Color::getColorFromRGB(238, 228, 219));
     add(box34);
 
     box1.setPosition(10, 80, 220, 220);
@@ -21,14 +21,14 @@ Screen2ViewBase::Screen2ViewBase() :
     add(box1);
 
     back_bt.setBoxWithBorderPosition(0, 0, 56, 33);
-    back_bt.setBorderSize(5);
-    back_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    back_bt.setBorderSize(0);
+    back_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(255, 153, 0), touchgfx::Color::getColorFromRGB(227, 203, 18), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     back_bt.setAction(flexButtonCallback);
     back_bt.setPosition(12, 8, 56, 33);
     add(back_bt);
 
     back_tx.setXY(18, 14);
-    back_tx.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    back_tx.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     back_tx.setLinespacing(0);
     back_tx.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NZLA));
     add(back_tx);
@@ -256,8 +256,8 @@ Screen2ViewBase::Screen2ViewBase() :
     add(highscoreText);
 
     restart_bt.setBoxWithBorderPosition(0, 0, 88, 33);
-    restart_bt.setBorderSize(5);
-    restart_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    restart_bt.setBorderSize(0);
+    restart_bt.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(12, 120, 173), touchgfx::Color::getColorFromRGB(57, 100, 115), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     restart_bt.setAction(flexButtonCallback);
     restart_bt.setPosition(138, 8, 88, 33);
     add(restart_bt);

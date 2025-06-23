@@ -74,6 +74,11 @@ void Screen2View::loadHighScoreFromFlash()
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
+    playMoveSound(600, 120);
+    HAL_Delay(30);
+    playMoveSound(800, 120);
+    HAL_Delay(30);
+    playMoveSound(1000, 140);
     loadHighScoreFromFlash();
     initGame();
 }
@@ -81,6 +86,11 @@ void Screen2View::setupScreen()
 void Screen2View::tearDownScreen()
 {
     Screen2ViewBase::tearDownScreen();
+    playMoveSound(400, 120);
+    HAL_Delay(30);
+    playMoveSound(600, 120);
+    HAL_Delay(30);
+    playMoveSound(800, 140);
 }
 
 void Screen2View::initGame()
@@ -192,7 +202,6 @@ void Screen2View::updateUI()
     }
 }
 
-
 void Screen2View::moveUp()
 {
     for (int y = 0; y < 4; y++) {
@@ -291,11 +300,15 @@ void Screen2View::restart()
         highScore = score;
 
     saveHighScoreToFlash();
-    playMoveSound(600, 100);
-    HAL_Delay(30);
+
+    //Am nhạc
     playMoveSound(800, 100);
     HAL_Delay(30);
+    playMoveSound(400, 100);
+    HAL_Delay(30);
     playMoveSound(1000, 150);
+
+    //Khoi tạo
     initGame();
 }
 

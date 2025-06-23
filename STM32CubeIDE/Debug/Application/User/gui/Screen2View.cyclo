@@ -1,0 +1,22 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:11:13:Screen2View::~Screen2View()	1
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:11:13:virtual Screen2View::~Screen2View()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:16:1:Screen2View::Screen2View()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:19:11:touchgfx::colortype getColorForValue(int)	11
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:37:6:void Screen2View::saveHighScoreToFlash()	2
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:60:6:void Screen2View::loadHighScoreFromFlash()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:110:6:void Screen2View::spawnTile()	5
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:205:6:void Screen2View::moveUp()	8
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:228:6:void Screen2View::moveDown()	8
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:251:6:void Screen2View::moveLeft()	8
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:274:6:void Screen2View::moveRight()	8
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:342:6:bool Screen2View::isGameOver()	9
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:359:6:void Screen2View::playMoveSound(uint32_t, uint32_t)	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:86:6:virtual void Screen2View::tearDownScreen()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:370:6:void Screen2View::playGameOverSound()	2
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:145:6:void Screen2View::updateUI()	19
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:96:6:void Screen2View::initGame()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:74:6:virtual void Screen2View::setupScreen()	1
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:297:6:virtual void Screen2View::restart()	2
+D:/game_2048/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:315:6:virtual void Screen2View::tickEvent()	8
