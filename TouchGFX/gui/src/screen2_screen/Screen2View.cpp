@@ -8,10 +8,10 @@
 
 extern osMessageQueueId_t myQueue01Handle;
 extern int highScore;
+extern TIM_HandleTypeDef htim3;
 
 #define FLASH_SECTOR_SAVE      FLASH_SECTOR_11
 #define FLASH_SECTOR_ADDRESS   0x080F0000
-
 
 Screen2View::Screen2View()
 {
@@ -61,7 +61,6 @@ void Screen2View::loadHighScoreFromFlash()
 {
     uint32_t value = *(uint32_t*)FLASH_SECTOR_ADDRESS;
 
-    // Nếu dữ liệu hợp lệ (ví dụ không phải 0xFFFFFFFF)
     if (value != 0xFFFFFFFF)
     {
         highScore = value;
@@ -292,6 +291,11 @@ void Screen2View::restart()
         highScore = score;
 
     saveHighScoreToFlash();
+    playMoveSound(600, 100);
+    HAL_Delay(30);
+    playMoveSound(800, 100);
+    HAL_Delay(30);
+    playMoveSound(1000, 150);
     initGame();
 }
 
@@ -304,10 +308,10 @@ void Screen2View::tickEvent()
 
         switch (res)
         {
-        case 'U': moveUp(); break;
-        case 'D': moveDown(); break;
-        case 'L': moveLeft(); break;
-        case 'R': moveRight(); break;
+			case 'U': moveUp();    playMoveSound(800, 50); break;
+			case 'D': moveDown();  playMoveSound(700, 50); break;
+			case 'L': moveLeft();  playMoveSound(600, 50); break;
+			case 'R': moveRight(); playMoveSound(500, 50); break;
         }
 
         spawnTile();
@@ -317,6 +321,7 @@ void Screen2View::tickEvent()
         if (isGameOver()) {
             gameOverText.setVisible(true);
             gameOverText.invalidate();
+            playGameOverSound();
         }
     }
 }
@@ -336,4 +341,24 @@ bool Screen2View::isGameOver()
         }
     saveHighScoreToFlash();
     return true;
+}
+
+void Screen2View::playMoveSound(uint32_t freq, uint32_t durationMs)
+{
+    uint32_t period = 1000000 / freq; // Timer chạy ở 1MHz
+    __HAL_TIM_SET_AUTORELOAD(&htim3, period - 1);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, period / 2); // 50% duty
+
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+    HAL_Delay(durationMs);
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_2);
+}
+
+void Screen2View::playGameOverSound()
+{
+    const uint32_t tones[] = {440, 392, 349, 330, 294}; // A-G-F-E-D (xuống dần)
+    for (int i = 0; i < sizeof(tones)/sizeof(tones[0]); i++) {
+        playMoveSound(tones[i], 120);
+        HAL_Delay(50);
+    }
 }

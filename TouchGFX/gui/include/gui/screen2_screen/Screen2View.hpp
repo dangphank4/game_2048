@@ -13,7 +13,7 @@ public:
     virtual void tearDownScreen();
     virtual void tickEvent();
     virtual void restart();
-
+    public void playMoveSound(uint32_t freq, uint32_t durationMs);
 protected:
     uint32_t tickCount[4][4] = {{0}};
     int score = 0;
@@ -33,6 +33,8 @@ protected:
     bool isGameOver();
     void saveHighScoreToFlash();
     void loadHighScoreFromFlash();
+
+    void playGameOverSound();
 };
 
 #endif // SCREEN2VIEW_HPP

@@ -21,7 +21,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include <stdbool.h>
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
@@ -75,6 +74,8 @@ LTDC_HandleTypeDef hltdc;
 
 SPI_HandleTypeDef hspi5;
 
+TIM_HandleTypeDef htim3;
+
 UART_HandleTypeDef huart1;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -115,6 +116,7 @@ static void MX_DMA2D_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_TIM3_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 
@@ -195,11 +197,11 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC2_Init();
   MX_USART1_UART_Init();
+  MX_TIM3_Init();
+  /* USER CODE BEGIN 2 */
   MX_TouchGFX_Init();
 
   MX_TouchGFX_PreOSInit();
-  /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -634,6 +636,55 @@ static void MX_SPI5_Init(void)
     isRevD = 1;
   }
   /* USER CODE END SPI5_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 89;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 2273;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+  HAL_TIM_MspPostInit(&htim3);
 
 }
 
@@ -1127,8 +1178,8 @@ void LCD_Delay(uint32_t Delay)
   * @brief  Function implementing the defaultTask thread.
   * @param  argument: Not used
   * @retval None
+  *
   */
-/* USER CODE END Header_StartDefaultTask */
 char getJoystickDirection(uint16_t x, uint16_t y)
 {
     // Trung tâm nằm khoảng 1700–2300 (deadzone)
@@ -1146,46 +1197,45 @@ char getJoystickDirection(uint16_t x, uint16_t y)
 
     return 0; // Trung tâm
 }
-
+/* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument)
 {
-    char lastDirection = 0;
+	char lastDirection = 0;
 
-    for(;;)
-    {
-        // Đọc ADC
-        HAL_ADC_Start(&hadc1);
-        HAL_ADC_Start(&hadc2);
-        HAL_ADC_PollForConversion(&hadc1, 10);
-        HAL_ADC_PollForConversion(&hadc2, 10);
-        uint16_t JoystickX = HAL_ADC_GetValue(&hadc1);
-        uint16_t JoystickY = HAL_ADC_GetValue(&hadc2);
+	    for(;;)
+	    {
+	        // Đọc ADC
+	        HAL_ADC_Start(&hadc1);
+	        HAL_ADC_Start(&hadc2);
+	        HAL_ADC_PollForConversion(&hadc1, 10);
+	        HAL_ADC_PollForConversion(&hadc2, 10);
+	        uint16_t JoystickX = HAL_ADC_GetValue(&hadc1);
+	        uint16_t JoystickY = HAL_ADC_GetValue(&hadc2);
 
-        // Debug UART
-        char s[30];
-        sprintf(s, "%4d-%4d\r\n", JoystickX, JoystickY);
-        HAL_UART_Transmit(&huart1, (uint8_t *)s, strlen(s), 100);
+	        // Debug UART
+	        char s[30];
+	        sprintf(s, "%4d-%4d\r\n", JoystickX, JoystickY);
+	        HAL_UART_Transmit(&huart1, (uint8_t *)s, strlen(s), 100);
 
-        // Phân tích hướng
-        char direction = getJoystickDirection(JoystickX, JoystickY);
+	        // Phân tích hướng
+	        char direction = getJoystickDirection(JoystickX, JoystickY);
 
-        // Gửi vào hàng đợi nếu là hướng mới
-        if (direction != 0 && direction != lastDirection)
-        {
-            lastDirection = direction;
-            osMessageQueuePut(myQueue01Handle, &direction, 0, 0);
-        }
+	        // Gửi vào hàng đợi nếu là hướng mới
+	        if (direction != 0 && direction != lastDirection)
+	        {
+	            lastDirection = direction;
+	            osMessageQueuePut(myQueue01Handle, &direction, 0, 0);
+	        }
 
-        // Nếu joystick đã về giữa, reset lại hướng cũ
-        if (direction == 0)
-        {
-            lastDirection = 0;
-        }
+	        // Nếu joystick đã về giữa, reset lại hướng cũ
+	        if (direction == 0)
+	        {
+	            lastDirection = 0;
+	        }
 
-        osDelay(50); // tránh gửi liên tục
-    }
+	        osDelay(50); // tránh gửi liên tục
+	    }
 }
-
 
 /**
   * @brief  Period elapsed callback in non blocking mode
